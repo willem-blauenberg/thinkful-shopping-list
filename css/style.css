@@ -230,6 +230,13 @@ body {
 	font-size: 1.3rem;
 }
 
+.striked {
+  text-decoration: line-through;
+}
+
+.nonstriked {
+  text-decoration: none;
+}
 
 
 

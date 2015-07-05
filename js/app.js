@@ -9,31 +9,30 @@
 $(document).ready(function() {
 
 
-		/*$(".addbutton").on({
-	                click: function() {
-						var x = $(".button").val();
-						$(".list ul").append("<li><input type='checkbox'>", "bananas","</li>");
-		}
-		})	*/	
-
-
 		$('.addbutton').click(function(){
 			var toAdd = $('input').val();
 			$('.list ul').append('<li class="item">' + '<input class="checkbox" type="checkbox">' + toAdd +'</li>')
 		})
 
-		$(document).on('click', '.item', function() {
-			
-			$(this).remove();
-			
-		})
+		$('input:checked').parent('li').addClass('striked');
+		$('input:checkbox:not(:checked)').parent('li').removeClass('striked');
 
+		$('input').each(function(){
+			var checked = $('input').prop('checked');
+			$(this).click(function(){
+				
+				if (checked == false) {
+					$(this).parent('li').toggleClass('striked');
+					//$(this).prop('checked');
+				} 
+				if (checked == true) {
+					$(this).parent('li').toggleClass('nonstriked');
+					//$(this).prop('input:checkbox:not(:checked)');
+				}
+			})
+		});
 		
-		$('.remove').click(function() {
-			if ( $('.cb').is(":checked")) {
-				$(this).remove();
-			}
+		$('.remove').click(function(){
+			$('input:checked').parent('li').remove();
 		})
-
-
 })
